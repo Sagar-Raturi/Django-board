@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<li class='breadcrumb-item active'>Boards</li>
+{% endblock %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th class="py-3 fw-semibold">Board</th>
+                <th class="py-3 fw-semibold">Posts</th>
+                <th class="py-3 fw-semibold">Topics</th>
+                <th class="py-3 fw-semibold">Last Post</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for board in boards %}
+            <tr>
+                <td>
+                    <a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a>
+                    <small class="text-muted d-block">
+                        {{ board.description }}
+                    </small>
+                </td>
+                <td class="align-middle">0</td>
+                <td class="align-middle">0</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% comment %} 
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Boards</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+  <body>
+    <div class="container mt-5">
+
+        <!-- Breadcrumb box -->
+        <div class="card shadow-sm text-bg-light mb-4">
+            <div class="card-header py-3 fw-semibold">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item active">Boards</li>
+            </ol>
+            </div>
+        </div>
+
+        <!-- Boards table -->
+        <table class="table table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th class="py-3 fw-semibold">Board</th>
+                <th class="py-3 fw-semibold">Posts</th>
+                <th class="py-3 fw-semibold">Topics</th>
+                <th class="py-3 fw-semibold">Last Post</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for board in boards %}
+                <tr>
+                <td>
+                    <a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a>
+                    <small class="text-muted d-block">
+                    {{ board.description }}
+                    </small>
+                </td>
+                <td class="align-middle">0</td>
+                <td class="align-middle">0</td>
+                <td></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+  </body>
+</html> {% endcomment %}
